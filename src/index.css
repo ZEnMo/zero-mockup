@@ -1,0 +1,224 @@
+@font-face {
+  font-family: Paula;
+  src: url(Paula-Regular.otf);
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+-moz-appearance: textfield;
+
+}
+input,select{
+  cursor: text;
+  all: unset;
+  width: 100%;
+  text-align: center;
+  font-family: 'Paula', sans-serif;
+  color: var(--text-color);
+  font-weight: 600;
+}
+body, html {
+  overflow: hidden;
+  font-family: 'Paula', sans-serif;
+  height: 100%;
+  margin: 0;
+}
+:root {
+  --main-bg-color: #f2f2f2;
+  --alt-bg-color:#e1e1e1;
+  --text-color:#707070;
+  --map-color:#FF0000;
+}
+
+#map {
+  z-index:4;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+#bottomMenu {
+  z-index: 401;
+  position: absolute;
+ bottom: 0;
+  left: 0;
+ 
+}
+#menuTab{
+      width: 100vw;
+      display: flex;
+      justify-content: center; /* Center horizontally */
+      align-items: center; /* Center vertically */
+  
+}
+.bottom-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100%;
+  position: relative;
+  
+
+
+}
+#sideMenu{
+  position: absolute;
+  z-index: 402;
+  display: flex;
+  flex-direction: column;
+  padding-block: 7%;
+  padding-inline: 1%;
+}
+
+.tab, .info-block, .info-block-col, .run-simulation {
+  box-sizing: border-box;
+
+
+
+      border-left: 0.5px solid #707070;
+      border-right: 0.5px solid #707070;
+    
+  text-align: center;
+  font-family: 'Paula', sans-serif;
+  font-size: 1.1vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--main-bg-color);
+}
+.tab{
+  width: 15%;
+}
+.bottom-bar-tabs{
+position: relative;
+  z-index: 501;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--alt-bg-color);
+}
+.tab.active {
+  background-color: var(--alt-bg-color);
+}
+
+.info-blocks {
+  z-index: 500;
+  transition: bottom 1s ease-in-out;
+ 
+  position: relative;
+  width: 50vw;
+  height: 15rem;
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+grid-template-rows: 50% 50%;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #707070;
+  padding: 1rem;
+  background-color: var(--alt-bg-color);
+ 
+}
+span{
+  color: #707070;
+  font-size: .9vw;
+  font-weight: bold;
+}
+
+.block-double {
+  background-color: var(--main-bg-color);
+  grid-row: span 2;
+
+}
+
+p, h1, h2 {
+  margin: 0;
+  font-family: 'Paula', sans-serif;
+  color: #707070;
+  font-size: .9vw;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2, input,select {
+  font-size: 2vw;
+}
+
+h2 span {
+  font-size: .9vw;
+}
+
+h2 span sup {
+  font-size: .5vw;
+}
+.fade-effect {
+  opacity: 0;
+  transition: opacity 0.5s; /* Adjust duration as desired */
+}
+
+.fade-in {
+  opacity: 1 !important; /* Use !important to ensure the override */
+}
+.loading::before {
+  content: "Loading...";
+  position: absolute;
+  background: rgba(255, 255, 255, 0.8); /* Adjust as needed for visibility */
+  border-radius: 5px;
+  padding: 2px 5px;
+  font-size: 0.9em;
+}
+.fade-effect, .loading::before {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.loading::before {
+  content: "Loading...";
+  position: absolute;
+  background: rgba(255, 255, 255, 0.8); /* Adjust as needed for visibility */
+  border-radius: 5px;
+  padding: 2px 5px;
+  font-size: 0.9em;
+  opacity: 0; /* Start with it transparent */
+}
+
+
+/*anim stuff*/
+.rise{
+  bottom: -15rem;
+}
+.fade-out {
+  animation: fadeOut 0.3s forwards;
+}
+
+.fade-in {
+  animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.leaflet-left .leaflet-control {
+  margin-left: 1vw;
+}
+.leaflet-top .leaflet-control {
+  margin-top: 1vh;
+}
+h2{
+  padding: none;
+  margin: none;
+}
