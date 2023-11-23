@@ -1,7 +1,8 @@
 // HoodContext.js
 
 import React, { createContext, useEffect, useRef, useState } from 'react';
-import { calculate } from './randomGeneration';
+import { calculate } from '../helpers/randomGeneration';
+
 
 export const HoodContext = createContext(null);
 

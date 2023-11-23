@@ -34,40 +34,50 @@ export function stopSimulation() {
   simulationRunning = false;
   clearTimeout(timeoutId);
 }
-
-// Main calculation function
 export function calculate(hoodInfo, updateHoodInfo) {
-  
+ 
 
-  console.log("tickkw", hoodInfo)
+  // Existing new code for time and generation calculation
   const date = hoodInfo.date;
   date.setHours(date.getHours() + 1);
   const hour = date.getHours();
-  
+
   const solarGeneration = Number(energyCurve.solar[hour] * hoodInfo.solarAssets * hoodInfo.solarCapacity).toFixed(2);
   const windGeneration = Number(energyCurve.wind[hour] * hoodInfo.windAssets * hoodInfo.windCapacity).toFixed(2);
   const totalGeneration = parseFloat(solarGeneration) + parseFloat(windGeneration);
 
+  // Old logic for consumption calculation with randomness
   let consumption = (
     timeCurve.livingHouse[hour] * hoodInfo.compositions.living_houses +
     timeCurve.smallBusiness[hour] * hoodInfo.compositions.small_business +
     timeCurve.largeBusiness[hour] * hoodInfo.compositions.large_business
   );
+  consumption += Math.random() * 0.1; // Small random addition
 
+  // Old logic for handling energy surplus or deficit
   let updatedHoodInfo = { ...hoodInfo, date, solarGeneration, windGeneration, totalGeneration, consumption };
 
   if (totalGeneration >= consumption) {
     const surplus = totalGeneration - consumption;
-    updatedHoodInfo.batteryLevel = Math.min(hoodInfo.batteryLevel + surplus, hoodInfo.batteryUnits * hoodInfo.singleBatteryCapacity);
+    if (hoodInfo.batteryLevel < hoodInfo.batteryUnits * hoodInfo.singleBatteryCapacity) {
+      updatedHoodInfo.batteryLevel = Math.min(hoodInfo.batteryLevel + surplus, hoodInfo.batteryUnits * hoodInfo.singleBatteryCapacity);
+    } else {
+      updatedHoodInfo.grid = -surplus; // Surplus energy is sent to the grid
+    }
   } else {
     const deficit = consumption - totalGeneration;
     const batteryDischarge = Math.min(deficit, hoodInfo.batteryLevel);
     updatedHoodInfo.batteryLevel -= batteryDischarge;
+
+    if (consumption > totalGeneration) {
+      updatedHoodInfo.grid = consumption - totalGeneration; // Deficit is made up from the grid
+    }
   }
 
+  // Call updateHoodInfo to update the state
   updateHoodInfo(updatedHoodInfo);
-
 }
+
 
 // Function to run the simulation
 export function runSimulationCalc(hoodInfo, updateHoodInfo) {

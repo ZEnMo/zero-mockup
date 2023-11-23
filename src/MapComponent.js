@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { MapContainer, TileLayer, GeoJSON, FeatureGroup } from 'react-leaflet';
+import { TileLayer, GeoJSON, FeatureGroup, MapContainer } from 'react-leaflet';
 import { HoodContext } from './HoodContext';
 import { generateRandomJSONObject } from './randomGeneration';
 

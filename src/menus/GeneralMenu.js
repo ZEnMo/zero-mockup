@@ -25,24 +25,24 @@ const GeneralMenu = () => {
     <div  style={{ all: 'inherit' }} >
       <div class="block block-double">
         <p>Current Net Consumption</p>
-        <h2 id="current-net-consumption">{Math.round(10000*hoodInfo.consumption)/100} <span>kWh</span></h2>
+        <h2 id="current-net-consumption">{Math.round(100*hoodInfo.consumption)/100} <span>kWh</span></h2>
     </div>
     <div class="block">
     <p>Current Solar Generation</p>
-    <h2 id="current-solar-generation">{Math.round(10000*hoodInfo.solarGeneration)/100}<span>kWh</span></h2>
+    <h2 id="current-solar-generation">{Math.round(100*hoodInfo.solarGeneration)/100}<span>kWh</span></h2>
     </div>
     <div class="block">
     <p>Current Wind Generation</p>
-    <h2 id="current-wind-generation">{Math.round(10000*hoodInfo.windGeneration)/100}<span>kWh</span></h2>
+    <h2 id="current-wind-generation">{Math.round(100*hoodInfo.windGeneration)/100}<span>kWh</span></h2>
     </div>
     <div class="block">
     <p>Current Battery Storage</p>
-    <h2 id="current-battery-storage">{Math.round(10000*+hoodInfo.batteryLevel)/100}<span>kWh</span></h2>
+    <h2 id="current-battery-storage">{Math.round(100*+hoodInfo.batteryLevel)/100}<span>kWh</span></h2>
     </div>
     
     <div class="block">
         <p>National Grid Addition</p>
-        <h2 id="national-grid-adidition">{Math.round(10000*hoodInfo.grid)/100}<span>kWh</span></h2>
+        <h2 id="national-grid-adidition">{Math.round(100*hoodInfo.grid)/100}<span>kWh</span></h2>
     </div>
     <div class="block">
         <p>Input 3</p>

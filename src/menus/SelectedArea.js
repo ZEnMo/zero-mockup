@@ -2,16 +2,16 @@ import React, { useContext, useEffect } from 'react';
 import { HoodContext } from '../HoodContext';
 import { MenuStates } from '../App';
 import { runSimulationCalc } from '../randomGeneration';
-import useSimulation from '../useSimulation';
+
 
 const SelectedArea = ({ onSwitchMenu }) => {
-  const { hoodInfo,updateHoodInfo } = useContext(HoodContext);
+  const { hoodInfo,updateHoodInfo,runSimulation } = useContext(HoodContext);
 
 
   useEffect(() => {
     console.log('Component updated with new hoodInfo:', hoodInfo);
   }, [hoodInfo]);
-  const { runSimulation, stopSimulation } = useSimulation();
+
   return (
       <div style={{ all: 'inherit' }}>
      <div class="block block-double" id="data-block1">
